@@ -16,7 +16,7 @@ describe DockingStation do
   end
 
   it ':dock_bike does not add a bike if 20 bikes are present' do
-    20.times { subject.dock_bike(Bike.new) }
+    DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(Bike.new) }
     expect { subject.dock_bike(Bike.new) }.to raise_error(RuntimeError)
   end
 
