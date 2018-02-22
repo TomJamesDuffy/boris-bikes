@@ -11,10 +11,9 @@ let(:dummy_bike) { double :dummy_bike }
     end
 
     it 'returns a new bike' do
-      allow(dummy_bike).to receive(:working?, :working).and_return(true)
+      allow(dummy_bike).to receive(:working?).and_return(true)
       allow(dummy_bike).to receive(:working).and_return(true)
       subject.dock_bike(dummy_bike)
-
       expect(subject.release_bike).to be_working
     end
 
@@ -23,9 +22,9 @@ let(:dummy_bike) { double :dummy_bike }
     end
 
     it 'should not release bike if not working' do
-      bike = double(:bike)
-      bike.working = false
-      subject.dock_bike(bike)
+      allow(dummy_bike).to receive(:working?).and_return(true)
+      allow(dummy_bike).to receive(:working).and_return(false)
+      subject.dock_bike(dummy_bike)
       expect { subject.release_bike }.to raise_error(RuntimeError)
     end
   end
@@ -38,7 +37,8 @@ let(:dummy_bike) { double :dummy_bike }
     end
 
     it 'adds a bike' do
-      expect(subject.dock_bike(double(:bike))).to be_instance_of(Bike)
+      allow(dummy_bike).to receive(:is_a?).with(Bike).and_return(true)
+      expect(subject.dock_bike(dummy_bike)).is_a?(Bike)
     end
   end
 
