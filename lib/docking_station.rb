@@ -1,9 +1,10 @@
-require 'bike'
+require './lib/bike.rb'
 
 class DockingStation
   attr_reader :bike
 
   def release_bike
+    fail if @bike.nil?
     Bike.new
   end
 

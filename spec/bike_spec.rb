@@ -5,4 +5,3 @@ describe Bike do
     expect(subject.working?).to eq(true)
   end
 end
-
