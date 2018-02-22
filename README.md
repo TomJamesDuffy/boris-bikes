@@ -6,6 +6,8 @@
 
 The instructions below will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+`git clone https://github.com/TomJamesDuffy/boris-bikes-1.git`
+
 ## Features
 * Docking Hubs
 * Bikes
