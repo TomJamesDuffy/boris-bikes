@@ -24,8 +24,15 @@ describe DockingStation do
     expect(subject.dock_bike(Bike.new)).to be_instance_of(Bike)
   end
 
-  it ':capacity to equal 21' do 
+  it ':capacity to equal 21' do
     docking_station = DockingStation.new(21)
     expect(docking_station.capacity).to eq(21)
+  end
+
+  it 'should not release bike if not working' do
+    bike = Bike.new
+    bike.working = false
+    subject.dock_bike(bike)
+    expect { subject.release_bike }.to raise_error(RuntimeError)
   end
 end

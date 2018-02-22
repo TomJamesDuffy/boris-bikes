@@ -13,7 +13,7 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
-    @bikes.pop
+    @bikes.delete(working_bikes[0])
   end
 
   def dock_bike(bike)
@@ -23,10 +23,15 @@ class DockingStation
 
   private
   def empty?
-    @bikes.empty?
+    return true if return_working_bikes.empty?
+    false
   end
 
   def full?
     @bikes.length >= @capacity
+  end
+
+  def return_working_bikes
+    @bikes.select { |bike| bike.working == true }
   end
 end
