@@ -23,4 +23,9 @@ describe DockingStation do
   it ':dock_bike adds a bike' do
     expect(subject.dock_bike(Bike.new)).to be_instance_of(Bike)
   end
+
+  it ':capacity to equal 21' do 
+    docking_station = DockingStation.new(21)
+    expect(docking_station.capacity).to eq(21)
+  end
 end
