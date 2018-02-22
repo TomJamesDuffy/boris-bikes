@@ -15,6 +15,11 @@ describe DockingStation do
     expect { subject.release_bike }.to raise_error(RuntimeError)
   end
 
+  it ':dock_bike does not add a bike if bike is present' do
+    subject.dock_bike(Bike.new) 
+    expect { subject.dock_bike(Bike.new) }.to raise_error(RuntimeError)
+  end
+
   it ':dock_bike adds a bike' do
     expect(subject.dock_bike(Bike.new)).to be_instance_of(Bike)
   end

@@ -9,6 +9,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
+    fail 'Bike is present' unless @bike.nil?
     @bike = bike
   end
 end
