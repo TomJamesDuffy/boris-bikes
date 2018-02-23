@@ -11,7 +11,9 @@ The instructions below will get you a copy of the project up and running on your
 ## Features
 * Docking Hubs
 * Bikes
+* Garages
+* Vans 
 
 ## Authors
-* Hemesh Unka - [@Hemesh-Unka](https://github.com/hemesh-unka)
 * Thomas Duffy - [@Thomas-Duffy](https://github.com/tomjamesduffy)
+* Hemesh Unka - [@Hemesh-Unka](https://github.com/hemesh-unka)

@@ -11,8 +11,7 @@ let(:dummy_bike) { double :dummy_bike }
     end
 
     it 'returns a new bike' do
-      allow(dummy_bike).to receive(:working?).and_return(true)
-      allow(dummy_bike).to receive(:working).and_return(true)
+      allow(dummy_bike).to receive_messages(working?: true, working: true)
       subject.dock_bike(dummy_bike)
       expect(subject.release_bike).to be_working
     end
@@ -22,8 +21,7 @@ let(:dummy_bike) { double :dummy_bike }
     end
 
     it 'should not release bike if not working' do
-      allow(dummy_bike).to receive(:working?).and_return(true)
-      allow(dummy_bike).to receive(:working).and_return(false)
+      allow(dummy_bike).to receive_messages(working?: true, working: false)
       subject.dock_bike(dummy_bike)
       expect { subject.release_bike }.to raise_error(RuntimeError)
     end
@@ -32,8 +30,8 @@ let(:dummy_bike) { double :dummy_bike }
   describe ':dock_bike' do
 
     it 'does not add a bike if 20 bikes are present' do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike double(:bike) }
-      expect { subject.dock_bike double(:bike) }.to raise_error(RuntimeError)
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock_bike(dummy_bike) }
+      expect { subject.dock_bike(dummy_bike) }.to raise_error(RuntimeError)
     end
 
     it 'adds a bike' do
