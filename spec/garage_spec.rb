@@ -5,10 +5,6 @@ describe Garage do
 
   describe ":fix_bikes" do
 
-    it 'response' do
-      expect(subject).to respond_to :fix_bikes
-    end
-
     it 'fixes all broken bikes in the bikes object' do
       bike = Bike.new
       subject.bikes.push(bike)
@@ -18,3 +14,5 @@ describe Garage do
     end
   end
 end
+
+# Testing needs to be de-coupled from bike class.
